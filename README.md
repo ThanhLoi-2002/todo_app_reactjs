@@ -53,6 +53,3 @@ Mật khẩu: 123456
 Tài khoản: admin
 Mật khẩu: 123456
 ```
-
-## Ứng dụng đã được deploy
-Link website [here](https://todo-app-reactjs.onrender.com/)
