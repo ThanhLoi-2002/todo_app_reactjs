@@ -8,6 +8,5 @@ export const getToken = () => {
 };
 
 export const removeToken = () => {
-  console.log("remove token");
   localStorage.removeItem(ACCESS_TOKEN);
 };

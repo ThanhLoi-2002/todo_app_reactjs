@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { authReducer, userReducer } from "./slice";
+import { authReducer, todoReducer, userReducer } from "./slice";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     user: userReducer,
+    todo: todoReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),

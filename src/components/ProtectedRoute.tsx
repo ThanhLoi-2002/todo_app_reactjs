@@ -1,7 +1,4 @@
-import Login from "@/pages/user/auth/login";
 import { useAppSelector } from "@/redux";
-import { handleToast } from "@/utils/toast";
-import { removeToken } from "@/utils/token";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -17,16 +14,21 @@ const ProtectedRoute: React.FC<Props> = ({
   const { isLoading, user } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
-  const userRole = user?.role;
-  const hasAccess = userRole && rolesRequired.includes(userRole);
-
   useEffect(() => {
-    if (!user) {
-      // handleToast(false, "Bạn cần phải đăng nhập");
-      // removeToken();
-      // navigate("/login");
+    if (!isLoading) {
+      if (!user) {
+        // Redirect to login if no user
+        navigate("/login");
+      } else {
+        // Redirect based on user role
+        if (user.role === "USER") {
+          navigate("/");
+        } else if (user.role === "ADMIN") {
+          navigate("/dashboard");
+        }
+      }
     }
-  }, [user]);
+  }, [isLoading, user]);
 
   if (isLoading) {
     return (
@@ -34,15 +36,18 @@ const ProtectedRoute: React.FC<Props> = ({
         Loading...
       </div>
     );
-  }
+  } else {
+    const userRole = user?.role;
 
-  return hasAccess ? (
-    <>{children}</>
-  ) : (
-    <div className="flex justify-center items-center h-screen">
-      Bạn không thể truy cập trang này
-    </div>
-  );
+    const hasAccess = userRole && rolesRequired.includes(userRole);
+    return hasAccess ? (
+      <>{children}</>
+    ) : (
+      <div className="flex justify-center items-center h-screen">
+        {/* Bạn không thể truy cập trang này */}
+      </div>
+    );
+  }
 };
 
 export default ProtectedRoute;

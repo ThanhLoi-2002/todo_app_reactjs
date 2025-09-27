@@ -4,4 +4,8 @@ export interface IResponse<T = any> {
   data?: T;
 }
 
-export const DOMAIN = import.meta.env.VITE_API_URL;
+export type Option = {
+  label: string;
+  value: string;
+  icon?: React.ComponentType<{ className?: string }>;
+};

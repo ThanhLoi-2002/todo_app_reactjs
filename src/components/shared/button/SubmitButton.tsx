@@ -3,7 +3,7 @@ import { FC } from "react";
 
 interface Props {
   isLoading?: boolean;
-  title: string;
+  title?: string;
   loadingButtonTitle?: string;
   className?: string;
   icon?: any;
@@ -19,12 +19,12 @@ const SubmitButton: FC<Props> = ({
 }) => {
   const Icon = icon;
   return (
-    <div className="sm:col-span-1">
+    <div className="">
       {isLoading ? (
         <button
           disabled
           type="button"
-          className={`${className} flex justify-center items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-slate-900 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-slate-800`}
+          className={`${className} flex justify-center items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-lg`}
         >
           <Loader className="animate-spin w-5 h-5 mr-2" />
           {loadingButtonTitle}
@@ -33,9 +33,9 @@ const SubmitButton: FC<Props> = ({
         <button
           type="submit"
           onClick={onClick}
-          className={`${className} flex justify-center items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-slate-900 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-slate-800`}
+          className={`${className} flex justify-center items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-lg`}
         >
-          {Icon && <Icon className="w-5 h-5 mr-2" />}
+            {Icon && <Icon className={`w-5 h-5 ${title && "mr-2"}`} />}
           <span>{title}</span>
         </button>
       )}

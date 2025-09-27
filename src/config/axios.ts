@@ -43,7 +43,6 @@ instance.interceptors.response.use(
     // Do something with response error
     console.log("response.data", error.response.data);
     if(error?.response?.status === 401) {
-      // window.location.href = '/login';
       store.dispatch(authActions.logout());
       store.dispatch(userActions.logout());
     }

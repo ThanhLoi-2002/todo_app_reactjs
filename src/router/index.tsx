@@ -1,6 +1,7 @@
 
 import ProtectedRoute from "@/components/ProtectedRoute";
 import NotFoundPage from "@/pages/404";
+import Dashboard from "@/pages/admin/dashboard/dashboard";
 import Login from "@/pages/user/auth/login";
 import Register from "@/pages/user/auth/register";
 import Home from "@/pages/user/home/home";
@@ -25,20 +26,14 @@ const router = createBrowserRouter([
     ),
   },
   // //Admin
-  // {
-  //   element: (
-  //     <ProtectedRoute rolesRequired={["ADMIN"]}>
-  //       <AdminLayout />
-  //     </ProtectedRoute>
-  //   ),
-  //   path: "/admin",
-  //   children: [
-  //     {
-  //       path: "products",
-  //       element: <Products />,
-  //     },
-  //   ],
-  // },
+  {
+    path: "/dashboard",
+    element: (
+      <ProtectedRoute rolesRequired={["ADMIN"]}>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
+  },
 
   {
     path: "*",

@@ -50,7 +50,7 @@ const RegisterForm = () => {
             isLoading={isLoading}
             title={"Sign Up"}
             loadingButtonTitle={"Creating please wait..."}
-            className="w-full"
+            className="w-full bg-slate-900 hover:bg-slate-800"
             icon={LogIn}
           />
 

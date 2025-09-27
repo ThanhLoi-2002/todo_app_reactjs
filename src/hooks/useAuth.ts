@@ -12,6 +12,8 @@ import authApi from "@/services/authApi";
 import { handleToast } from "@/utils/toast";
 import { useNavigate } from "react-router-dom";
 import { userActions } from "@/redux/slice/userSlice";
+import { setToken } from "@/utils/token";
+import useUser from "./useUser";
 
 const registerDefaultValues: RegisterFormType = {
   username: "",
@@ -25,9 +27,10 @@ const loginDefaultValues: LoginFormType = {
 };
 
 export default function useAuth() {
+  const { getMe } = useUser();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  
+
   const registerForm = useForm<RegisterFormType>({
     resolver: yupResolver(RegisterForm),
     defaultValues: registerDefaultValues,
@@ -38,6 +41,23 @@ export default function useAuth() {
     defaultValues: loginDefaultValues,
   });
 
+  async function onLoginSubmit(values: LoginFormType) {
+    dispatch(authActions.signIn());
+    try {
+      const { status, message, data }: any = await authApi.signIn(values);
+
+      if (status) {
+        setToken(data.accessToken);
+        handleToast(true, message);
+        dispatch(authActions.signInSuccess());
+        getMe();
+        // navigate("/");
+      }
+    } catch (e: any) {
+      dispatch(authActions.handleError(e.message));
+    }
+  }
+
   async function onRegisterSubmit(values: RegisterFormType) {
     dispatch(authActions.register());
     try {
@@ -46,7 +66,7 @@ export default function useAuth() {
       if (status) {
         handleToast(status, message);
         dispatch(authActions.registerSuccess());
-        navigate('/login')
+        navigate("/login");
       }
     } catch (e: any) {
       dispatch(authActions.handleError(e.message));
@@ -56,9 +76,11 @@ export default function useAuth() {
   const logout = () => {
     dispatch(authActions.logout());
     dispatch(userActions.logout());
-  }
+    navigate("/login");
+  };
 
   return {
+    onLoginSubmit,
     onRegisterSubmit,
     registerForm,
     loginForm,
