@@ -44,12 +44,13 @@ const LoginForm = () => {
 
         <p className="text-sm font-light text-gray-500 ">
           Bạn chưa có tài khoản?{" "}
-          <a
-            href="/register"
-            className="font-medium text-purple-600 hover:underline"
+          <span
+            // href="/register"
+            onClick={() => navigate("/register")}
+            className="font-medium text-purple-600 hover:underline cursor-pointer"
           >
             Đăng ký
-          </a>
+          </span>
         </p>
       </form>
     </>
