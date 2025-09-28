@@ -9,6 +9,7 @@ export default function useUser() {
 
   const getMe = async () => {
     try {
+      dispatch(userActions.getMe());
       const { status, data }: any = await userApi.getMe();
       if (status) {
         dispatch(userActions.getMeSuccess(data));

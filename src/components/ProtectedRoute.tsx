@@ -1,4 +1,5 @@
 import { useAppSelector } from "@/redux";
+import { removeToken } from "@/utils/token";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -18,6 +19,7 @@ const ProtectedRoute: React.FC<Props> = ({
     if (!isLoading) {
       if (!user) {
         // Redirect to login if no user
+        // removeToken()
         navigate("/login");
       } else {
         // Redirect based on user role

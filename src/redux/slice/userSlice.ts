@@ -30,7 +30,6 @@ export const userSlice = createSlice({
 
     getMe(state) {
       state.isLoading = true;
-      console.log("getMe reducer called");
     },
     getMeSuccess(state, action: PayloadAction<UserType>) {
       state.isLoading = false;
