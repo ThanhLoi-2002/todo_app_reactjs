@@ -56,4 +56,6 @@ Mật khẩu: 123456
 
 
 ## Ứng dụng đã được deploy trên render.com
-Link website [here](https://todo-app-reactjs.onrender.com/)
+Link website [here](https://todo-app-reactjs.onrender.com/) 
+
+Sau 15 phút không sử dụng, server sẽ tự tắt. Khi call api lần đầu cần chờ khoảng 1 - 2 phút để render khởi động server

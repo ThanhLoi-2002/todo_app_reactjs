@@ -7,7 +7,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen px-8">
-      <div className="flex justify-between items-center p-4 border-b">
+      <div className="flex justify-between items-center py-4 border-b">
         <h2>Danh sách công việc</h2>
         <SubmitButton title={"Đăng xuất"} onClick={logout} className='bg-slate-900 hover:bg-slate-800'/>
       </div>

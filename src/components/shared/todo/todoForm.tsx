@@ -28,7 +28,7 @@ const TodoForm: React.FC<Props> = ({ isOpen, closeModal, todo }) => {
       isOpen={isOpen}
       onRequestClose={closeModal}
       ariaHideApp={false}
-      className="relative mx-auto mt-10 max-w-lg p-6 bg-white rounded-lg shadow-lg border border-gray-300"
+      className="relative mx-auto mt-10 max-w-sm md:max-w-lg p-6 bg-white rounded-lg shadow-lg border border-gray-300"
     >
       <div className="flex justify-between items-center mb-2">
         <h2>{todo ? "Cập nhật" : "Thêm"} công việc</h2>
@@ -57,7 +57,7 @@ const TodoForm: React.FC<Props> = ({ isOpen, closeModal, todo }) => {
         />
         <div
           className={
-            user.role === UserRole.ADMIN &&`flex justify-between items-center`
+            user.role === UserRole.ADMIN && `flex justify-between items-center`
           }
         >
           {user.role === UserRole.ADMIN && (

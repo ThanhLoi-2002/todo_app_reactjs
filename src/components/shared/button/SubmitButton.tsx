@@ -24,7 +24,7 @@ const SubmitButton: FC<Props> = ({
         <button
           disabled
           type="button"
-          className={`${className} flex justify-center items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-lg`}
+          className={`${className} flex justify-center items-center px-5 py-2.5 text-sm font-medium text-center text-white rounded-lg`}
         >
           <Loader className="animate-spin w-5 h-5 mr-2" />
           {loadingButtonTitle}
@@ -33,7 +33,7 @@ const SubmitButton: FC<Props> = ({
         <button
           type="submit"
           onClick={onClick}
-          className={`${className} flex justify-center items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-lg`}
+          className={`${className} flex justify-center items-center px-5 py-2.5 text-sm font-medium text-center text-white rounded-lg`}
         >
             {Icon && <Icon className={`w-5 h-5 ${title && "mr-2"}`} />}
           <span>{title}</span>

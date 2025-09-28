@@ -30,7 +30,7 @@ const TodoList = () => {
               setIsOpenTodoForm(true);
             }}
             icon={Plus}
-            className="bg-green-700 hover:bg-green-800"
+            className="bg-green-700 hover:bg-green-800 mt-6"
           />
         )}
       </div>
